@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des groupes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Alignement centré pour tout le contenu de la page */
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .success-message,
+        .error-message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            padding: 8px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Ajout de la classe "center" pour centrer les éléments */
+        .center {
+            text-align: center;
+        }
+
+        /* Ajout de la classe "search-bar" pour positionner la barre de recherche en haut */
+        .search-bar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="center">Liste des groupes</h1>
+
+<!-- Check if the "successMessage" attribute exists in the model -->
+<div th:if="${successMessage}" class="success-message">
+    <p th:text="${successMessage}"></p>
+</div>
+<!-- Check if the "errorMessage" attribute exists in the model -->
+<div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nom du groupe</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${groups}">
+        <td th:text="${group.nom}"></td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${group.id})}">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="search-bar">
+    <h2 class="center">Rechercher un groupe par nom</h2>
+    <form th:action="@{/search}" method="get" class="center">
+        <input type="text" name="nom" placeholder="Nom du groupe">
+        <input type="submit" value="Rechercher">
+    </form>
+</div>
+
+<a th:href="@{/addGroup}" class="center">Ajouter un groupe</a>
+</body>
+</html>

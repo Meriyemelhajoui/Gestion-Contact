@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un contact</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        .mt-5 {
+            margin-top: 40px !important;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .btn {
+            font-size: 14px;
+            padding: 0.375rem 0.75rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Ajouter un contact</h1>
+
+    <!-- Check if the success message exists in the model and display it -->
+    <div th:if="${not #strings.isEmpty(successMessage)}" class="alert alert-success" th:text="${successMessage}"></div>
+
+    <form action="/EnregistrerContact" method="post" class="mt-5">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" class="form-control" required><br>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" class="form-control" required><br>
+            <label for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" class="form-control" required><br>
+            <label for="email_perso">Email Personnel :</label>
+            <input type="email" id="email_perso" name="email_perso" class="form-control" required><br>
+            <label for="email_pro">Email Professionnel :</label>
+            <input type="email" id="email_pro" name="email_pro" class="form-control" required><br>
+            <label for="genre">Genre :</label>
+
+            <select id="genre" name="genre" class="form-control">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            <label for="telephone_perso">Téléphone Personnel :</label>
+            <input type="text" id="telephone_perso" name="telephone_perso" class="form-control" required><br>
+            <label for="telephone_pro">Téléphone Professionnel :</label>
+            <input type="text" id="telephone_pro" name="telephone_pro" class="form-control" required><br>
+
+
+
+                <!-- autres champs du contact -->
+
+                <label for="group">Groupe:</label>
+                <select id="group" name="groupId"  class="form-control">
+                    <option value="">Aucun groupe</option>
+                    <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.nom}"></option>
+                </select>
+
+            <button type="submit" class="btn btn-primary">Ajouter</button><br>
+            <a th:href="@{/listContact}"> Revenir a la liste des contacts</a>
+
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

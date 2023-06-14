@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #d9534f;
+        }
+    </style>
+
+
+
+</head>
+<body>
+<h1>Error</h1>
+<p th:text="${errorMessage}"></p>
+</body>
+</html>

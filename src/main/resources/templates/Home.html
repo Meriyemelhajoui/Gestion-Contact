@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .header a {
+            margin-right: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .row {
+            margin-top: 40px;
+        }
+
+        .col-md-6 {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .list-group {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 0.75rem 1.25rem;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+
+        .list-group-item:first-child {
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+        }
+
+        .list-group-item:last-child {
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .list-group-item:hover {
+            z-index: 1;
+            color: #333;
+            text-decoration: none;
+            background-color: #f8f9fa;
+            border-color: rgba(0, 0, 0, 0.125);
+        }
+
+        .description {
+            margin-top: 40px;
+        }
+
+        .description p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Gestion de Contacts</h1>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Options :</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><a th:href="@{/contact/add}">Ajouter un contact</a></li>
+                <li class="list-group-item"><a th:href="@{/listContact}">Liste des contacts</a></li>
+                <li class="list-group-item"><a th:href="@{/addGroup}">Ajouter un groupe</a></li>
+                <li class="list-group-item"><a th:href="@{/listGroup}">Liste des groupes</a></li>
+
+                <!-- Ajoutez ici d'autres boutons ou liens vers d'autres fonctionnalités -->
+            </ul>
+
+
+            <div class="description mt-5">
+                <h2>Description :</h2>
+                <p>
+                    Bienvenue dans notre application de gestion de contacts. Notre application vous permet de gérer facilement
+                    vos contacts personnels et professionnels. Ajoutez de nouveaux contacts, enregistrez leurs informations
+                    importantes telles que les numéros de téléphone, les adresses e-mail et les adresses postales. Vous pouvez
+                    également organiser vos contacts en créant des groupes personnalisés. Notre interface conviviale et
+                    intuitive vous permet de naviguer rapidement et efficacement dans votre liste de contacts.
+                </p>
+                <p>
+                    Que vous soyez un particulier ou un professionnel, notre application de gestion de contacts vous aidera à
+                    garder une trace de toutes vos relations importantes. Ne perdez plus jamais un contact précieux et restez
+                    connecté avec vos amis, votre famille et vos collègues en toute simplicité.
+                </p>
+                <p>
+                    N'attendez plus, commencez dès maintenant à organiser votre carnet d'adresses avec notre application de
+                    gestion de contacts.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
